@@ -95,7 +95,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
         </div>
         <div class="field">
           <label for="title">Job title</label>
-          <input id="title" autocomplete="organization-title" placeholder="Operations Specialist" required>
+          <input id="title" autocomplete="organization-title" placeholder="Your Job Title" required>
           <div class="err" id="title-err"></div>
         </div>
         <div class="field">
@@ -210,7 +210,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
   const mapsFor=o=>'https://maps.google.com/?q='+encodeURIComponent(o.l1+', '+o.l2);
   const F="font-family:'DM Sans', Arial, Helvetica, sans-serif;mso-line-height-rule:exactly;color:#2b231d;text-align:left;";
   const IMG='border:0;outline:none;text-decoration:none;';
-  const EX={name:'Your Full Name',title:'Operations Specialist',dept:'Operations',ext:'',email:'name@corporatedirect.com',office:'reno'};
+  const EX={name:'Your Full Name',title:'Your Job Title',dept:'Your Department',ext:'',email:'name@corporatedirect.com',office:'reno'};
   const $=id=>document.getElementById(id);
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
