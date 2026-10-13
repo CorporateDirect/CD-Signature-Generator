@@ -73,6 +73,7 @@ button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:8px;max-width:70ch}
 code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
 .note{font-size:.85rem;color:var(--muted);margin:14px 0 0;max-width:70ch}
+.recommend{font-size:.9rem;margin:0 0 14px;max-width:70ch}
 @media (prefers-reduced-motion:no-preference){button{transition:background-color .15s,color .15s,opacity .15s}}
 </style>
 </head>
@@ -164,6 +165,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
           <button type="button" class="tab" role="tab" aria-selected="false" aria-controls="p-mac" id="t-mac">Outlook for Mac</button>
         </div>
         <div role="tabpanel" id="p-classic" aria-labelledby="t-classic">
+          <p class="recommend"><b>We strongly recommend switching to New Outlook</b> instead of staying on Classic. Signature setup there is a copy and paste, and the switch is a toggle in the top right of Outlook. Use the steps below only if you need to stay on Classic for now.</p>
           <ol>
             <li>Click <b>Classic Outlook on Windows</b>. You get a file called <code>Corporate Direct.htm</code>.</li>
             <li>Close Outlook.</li>
