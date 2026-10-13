@@ -112,6 +112,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
         <div class="field">
           <label for="email">Work email</label>
           <input id="email" type="email" autocomplete="email" placeholder="name@corporatedirect.com" required>
+          <span class="hint">Must be an @corporatedirect.com address.</span>
           <div class="err" id="email-err"></div>
         </div>
         <div class="field">
@@ -176,6 +177,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
             <li>Close the editor, then set it as the default for new messages and replies/forwards.</li>
           </ol>
         </div>
+        <p class="note">If you use both Classic Outlook and New Outlook, install the signature in both. They do not share signatures.</p>
         <p class="note">Delete any old signature you were using so recipients don't get two. Then send yourself a test email.</p>
       </div>
     </section>
@@ -268,7 +270,8 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
     ids.forEach(k=>{$(k).removeAttribute('aria-invalid'); $(k+'-err').textContent='';});
     Object.keys(msg).forEach(k=>{ if(!$(k).value.trim()){ $(k).setAttribute('aria-invalid','true'); $(k+'-err').textContent=msg[k]; ok=false; } });
     const e=$('email').value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){ $('email').setAttribute('aria-invalid','true'); $('email-err').textContent='Enter your full work email, like name@corporatedirect.com.'; ok=false; }
+    if(!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){ $('email').setAttribute('aria-invalid','true'); $('email-err').textContent='Enter your full work email, like name@corporatedirect.com.'; ok=false; }
+    else if(!/^[^\s@]+@corporatedirect\.com$/i.test(e)){ $('email').setAttribute('aria-invalid','true'); $('email-err').textContent='Use your Corporate Direct email ending in @corporatedirect.com.'; ok=false; }
     const x=$('ext').value.trim();
     if(x && !/^\d{1,6}$/.test(x)){ $('ext').setAttribute('aria-invalid','true'); $('ext-err').textContent='Use numbers only, or leave it blank.'; ok=false; }
     if(!$('office').value){ $('office').setAttribute('aria-invalid','true'); $('office-err').textContent='Choose the office you work from.'; ok=false; }
