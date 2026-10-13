@@ -211,7 +211,8 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
     const phoneText='(800) 600-1760'+(v.ext?' ext. '+esc(v.ext):'');
     const tel='tel:+18006001760'+(v.ext?','+encodeURIComponent(v.ext):'');
     const o=OFFICES[v.office]||OFFICES.reno;
-    return ''
+    const lead='<p style="margin:0;padding:0;font-size:12pt;line-height:16pt;mso-line-height-rule:exactly;"><br></p>\n';
+    return lead+lead
 +'<table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">\n'
 +'<tr><td valign="top" align="left" style="padding:0;text-align:left;">\n'
 +'<!--[if mso]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td valign="top" width="214" style="width:214px;"><![endif]-->\n'
@@ -246,7 +247,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
     return '<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">\n<head>\n<meta charset="UTF-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1"/>\n<meta name="format-detection" content="address=no, email=no"/>\n<title>Corporate Direct Email Signature</title>\n'
       +'<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->\n'
       +'<style>\nbody{margin:0;padding:0;}\ntable,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}\nimg{-ms-interpolation-mode:bicubic;}\na[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important;font-size:inherit!important;font-family:inherit!important;font-weight:inherit!important;line-height:inherit!important;}\n</style>\n</head>\n'
-      +'<body style="margin:0;padding:0;">\n<p style="margin:0;padding:0;font-size:12pt;line-height:normal;">&nbsp;</p>\n<p style="margin:0;padding:0;font-size:12pt;line-height:normal;">&nbsp;</p>\n'
+      +'<body style="margin:0;padding:0;">\n'
       +signature(v)+'</body>\n</html>\n';
   }
 
@@ -287,7 +288,7 @@ code{font:.85rem var(--mono);background:var(--bg);border:1px solid var(--line);b
   $('copy').addEventListener('click',async()=>{
     if(!validate()){ status('Fill in the highlighted fields first.',false); return; }
     const v=values(false).v, html=signature(v);
-    const text=v.name+'\n'+v.title+'\n'+v.dept+' | Corporate Direct, Inc.\n(800) 600-1760'+(v.ext?' ext. '+v.ext:'')+'\n'+v.email+'\nwww.corporatedirect.com\n'+OFFICES[v.office].l1+'\n'+OFFICES[v.office].l2;
+    const text='\n\n'+v.name+'\n'+v.title+'\n'+v.dept+' | Corporate Direct, Inc.\n(800) 600-1760'+(v.ext?' ext. '+v.ext:'')+'\n'+v.email+'\nwww.corporatedirect.com\n'+OFFICES[v.office].l1+'\n'+OFFICES[v.office].l2;
     try{
       await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);
       status('Copied. Paste it into Outlook’s signature editor.',true);
